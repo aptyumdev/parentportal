@@ -1,0 +1,205 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <!-- Hidden field to store student ID -->
+    <EditText
+        android:id="@+id/hidden_student_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_student_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Student Name: [Name]"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_student_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="ID: [ID]"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_student_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Class: [Class]"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="5"
+        android:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/btn_student_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Student Profile" />
+
+        <Button
+            android:id="@+id/btn_student_timetable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Timetable" />
+
+        <Button
+            android:id="@+id/btn_student_syllabus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Syllabus" />
+
+        <Button
+            android:id="@+id/btn_student_assignments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Assignments" />
+
+        <Button
+            android:id="@+id/btn_student_results"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Results" />
+
+        <Button
+            android:id="@+id/btn_student_date_sheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="DateSheet" />
+
+        <Button
+            android:id="@+id/btn_student_fee_voucher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Fee Voucher" />
+
+        <Button
+            android:id="@+id/btn_student_feedback"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Feedback" />
+
+        <Button
+            android:id="@+id/btn_student_transport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Transport" />
+
+        <Button
+            android:id="@+id/btn_student_announcements"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Announcements" />
+
+    </GridLayout>
+</LinearLayout><!--<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:padding="16dp"-->
+    <!--    android:fitsSystemWindows="true"-->
+    <!--    android:columnCount="2"-->
+    <!--    android:rowCount="5"-->
+    <!--    android:alignmentMode="alignMargins"-->
+    <!--    android:useDefaultMargins="true">-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_profile"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Student Profile" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_timetable"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Timetable" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_syllabus"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Syllabus" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_assignments"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Assignments" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_results"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Results" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_date_sheet"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="DateSheet" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_fee_voucher"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Fee Voucher" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_feedback"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Feedback" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_transport"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Transport" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_student_announcements"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_columnWeight="1"-->
+    <!--        android:text="Announcements" />-->
+
+    <!--</GridLayout>-->

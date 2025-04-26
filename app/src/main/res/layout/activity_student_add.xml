@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_student_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student ID"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_student_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_student_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student Full Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_student_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student Class"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_student_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student Age"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_save_student_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_save_student"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
