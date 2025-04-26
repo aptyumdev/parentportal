@@ -2,46 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!-- Custom Title Bar Layout -->
-    <LinearLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_student_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:hint="Student ID"
+        android:inputType="text" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/parent_activity_title"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="16dp" />
 
-        <Button
-            android:id="@+id/btn_teacher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
-            android:padding="16dp"
-            android:text="Login As Teacher" />
-
-        <Button
-            android:id="@+id/btn_parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
-            android:padding="16dp"
-            android:text="Login As Parent" />
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginTop="24dp" />
 </LinearLayout>

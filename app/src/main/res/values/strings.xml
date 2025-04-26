@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Parent Portal</string>
-    <string name="main_activity_title">Welcome To VU</string>
+    <string name="main_activity_title">Parent Portal</string>
     <string name="parent_activity_title">Parent Dashboard</string>
     <string name="teacher_activity_title">Teacher Panel</string>
+    <string name="button_login_as_teacher">Login As Teacher</string>
+    <string name="button_login_as_parent">Login As Parent</string>
+    <string name="student_list_title">Student List</string>
+    <string name="student_add_title">Add New Student</string>
+    <string name="student_detail_title">Student Details</string>
+    <string name="button_save_student">Save</string>
+    <string name="button_add_new_student">Add New Student</string>
 </resources>

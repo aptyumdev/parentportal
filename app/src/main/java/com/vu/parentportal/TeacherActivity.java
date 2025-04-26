@@ -1,46 +1,67 @@
 package com.vu.parentportal;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.vu.parentportal.database.AppDatabase;
+import com.vu.parentportal.models.Teacher;
 
 public class TeacherActivity extends AppCompatActivity {
-    private EditText teacherIdEditText;
-    private EditText teacherPasswordEditText;
+    private EditText teacherIdEditText, teacherPasswordEditText;
     private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher); // This line sets the layout
+        setContentView(R.layout.activity_teacher);
 
-        // Set the title (optional, but recommended)
-        setTitle(R.string.teacher_activity_title);
+        // Initialize the database using the static constant for the database name
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, AppDatabase.DATABASE_NAME)
+                .allowMainThreadQueries() // For simplicity, allow queries on the main thread (not recommended for production)
+                .build();
 
-        // Initialize views
+        // Check and insert default teacher record
+        if (db.teacherDao().getTeacherByTeacherId("teacher") == null) { // Assuming teacherId=1 for the default record
+            Teacher defaultTeacher = new Teacher();
+            defaultTeacher.setTeacherId("teacher"); // Use 1 as the ID for the default teacher
+            defaultTeacher.setTeacherPassword("123");
+            db.teacherDao().insertTeacher(defaultTeacher);
+        }
+
         teacherIdEditText = findViewById(R.id.teacherid);
         teacherPasswordEditText = findViewById(R.id.teacherpassword);
         loginButton = findViewById(R.id.loginButton);
 
-        // Set click listener for the login button
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the text from the EditText fields
-                String teacherId = teacherIdEditText.getText().toString();
-                String teacherPassword = teacherPasswordEditText.getText().toString();
+        loginButton.setOnClickListener(v -> {
+            String teacherIdInput = teacherIdEditText.getText().toString().trim();
+            String teacherPasswordInput = teacherPasswordEditText.getText().toString().trim();
 
-                // You can now use the teacherId and teacherPassword variables
-                // For example, you can display them in a Toast
-                String message = "Teacher ID: " + teacherId + "\nPassword: " + teacherPassword;
-                Toast.makeText(TeacherActivity.this, message, Toast.LENGTH_LONG).show();
+            // Validate for blank fields
+            if (teacherIdInput.isEmpty() || teacherPasswordInput.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+                return;
+            }
 
-                // Here, you would typically perform your login logic
-                // (e.g., check against a database, send to a server, etc.)
+            // Validate credentials
+            try {
+//                int teacherIdInput = Integer.parseInt(teacherIdInput);
+                Teacher teacher = db.teacherDao().getTeacherByTeacherId(teacherIdInput);
+
+                if (teacher != null && teacher.getTeacherPassword().equals(teacherPasswordInput)) {
+                    Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(TeacherActivity.this, StudentListActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Login Failed: Invalid credentials", Toast.LENGTH_LONG).show();
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Login Failed: Invalid Teacher ID", Toast.LENGTH_LONG).show();
             }
         });
     }
