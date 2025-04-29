@@ -37,6 +37,22 @@
             android:name=".StudentDetailActivity"
             android:exported="false"
             android:label="@string/student_detail_title" />
+
+        <activity
+            android:name=".StudentProfileActivity"
+            android:exported="false"
+            android:label="@string/student_profile_title" />
+
+        <activity
+            android:name=".StudentTimetableAddActivity"
+            android:exported="false"
+            android:label="@string/student_timetable_title" />
+
+        <activity
+            android:name=".FullScreenImageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ParentPortal.FullScreen"
+            android:label="@string/fullscreen_image_title" />
     </application>
 
 </manifest>
