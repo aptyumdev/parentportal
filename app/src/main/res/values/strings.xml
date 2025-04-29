@@ -9,6 +9,7 @@
     <string name="student_add_title">Add New Student</string>
     <string name="student_detail_title">Student Details</string>
     <string name="student_timetable_title">Student Timetable</string>
+    <string name="student_syllabus_title">Student Syllabus</string>
     <string name="student_profile_title">Student Profile</string>
     <string name="button_save_student">Save</string>
     <string name="button_add_new_student">Add New Student</string>

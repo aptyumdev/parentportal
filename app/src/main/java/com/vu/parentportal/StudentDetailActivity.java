@@ -30,6 +30,12 @@ public class StudentDetailActivity extends AppCompatActivity {
             intent.putExtra("studentId", studentId);
             startActivity(intent);
         });
+        Button syllabusButton = findViewById(R.id.btn_student_syllabus);
+        syllabusButton.setOnClickListener(v -> {
+            Intent intent = new Intent(StudentDetailActivity.this, StudentSyllabusAddActivity.class);
+            intent.putExtra("studentId", studentId);
+            startActivity(intent);
+        });
     }
 
     @Override

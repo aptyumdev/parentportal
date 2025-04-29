@@ -47,6 +47,10 @@
             android:name=".StudentTimetableAddActivity"
             android:exported="false"
             android:label="@string/student_timetable_title" />
+        <activity
+            android:name=".StudentSyllabusAddActivity"
+            android:exported="false"
+            android:label="@string/student_syllabus_title" />
 
         <activity
             android:name=".FullScreenImageActivity"

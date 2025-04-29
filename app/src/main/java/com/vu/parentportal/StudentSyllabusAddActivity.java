@@ -21,7 +21,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-public class StudentTimetableAddActivity extends AppCompatActivity {
+public class StudentSyllabusAddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri selectedImageUri;
     private String selectedImageName;
@@ -36,7 +36,7 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_timetable_add);
 
         studentId = getIntent().getStringExtra("studentId");
-        imageFileName = studentId + "_timetable.jpg";
+        imageFileName = studentId + "_syllabus.jpg";
         selectedImageTextView = findViewById(R.id.tv_selected_image);
         imagePreviewImageView = findViewById(R.id.iv_image_preview);
         Button selectImageButton = findViewById(R.id.btn_select_image);
@@ -91,7 +91,7 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
         });
         imagePreviewImageView.setOnClickListener(v -> {
             if (selectedImageUri != null) {
-                Intent intent = new Intent(StudentTimetableAddActivity.this, FullScreenImageActivity.class);
+                Intent intent = new Intent(StudentSyllabusAddActivity.this, FullScreenImageActivity.class);
                 intent.putExtra("imageUri", selectedImageUri);
                 startActivity(intent);
             } else {
