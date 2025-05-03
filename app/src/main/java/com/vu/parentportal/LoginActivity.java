@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.vu.parentportal.database.AppDatabase;
+import com.vu.parentportal.models.Student;
 import com.vu.parentportal.models.Teacher;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,12 +51,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginAsParent(String userIdInput, String userPasswordInput) {
-        // Implement parent login logic here
-        // For example, check the credentials against the database
-        // If successful, navigate to the parent dashboard
-        Toast.makeText(this, "Parent login not implemented yet", Toast.LENGTH_LONG).show();
-        // Intent intent = new Intent(LoginActivity.this, ParentDashboardActivity.class);
-        // startActivity(intent);
+        Student student = db.studentDao().getStudentByStudentId(userIdInput);
+        if (student != null && student.getStudentPassword().equals(userPasswordInput)) {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+            ((ParentPortalApp) getApplication()).setSelectedStudent(student);
+            Intent intent = new Intent(LoginActivity.this, StudentDetailActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Login Failed: Invalid credentials", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void loginAsTeacher(String userIdInput,  String userPasswordInput) {

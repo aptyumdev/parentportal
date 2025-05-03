@@ -23,7 +23,6 @@ public class StudentDetailActivity extends AppCompatActivity {
             intent.putExtra("selectedAction", "Profile");
             startActivity(intent);
         });
-
         Button timetableButton = findViewById(R.id.btn_student_timetable);
         timetableButton.setOnClickListener(v -> {
             goToStudentActionActivity("Timetable");
@@ -31,6 +30,19 @@ public class StudentDetailActivity extends AppCompatActivity {
         Button syllabusButton = findViewById(R.id.btn_student_syllabus);
         syllabusButton.setOnClickListener(v -> {
             goToStudentActionActivity("Syllabus");
+        });
+        Button resultButton = findViewById(R.id.btn_student_results);
+        resultButton.setOnClickListener(v -> {
+            goToStudentActionActivity("Result");
+        });
+
+        Button datesheetButton = findViewById(R.id.btn_student_date_sheet);
+        datesheetButton.setOnClickListener(v -> {
+            goToStudentActionActivity("Datesheet");
+        });
+        Button feevoucherButton = findViewById(R.id.btn_student_fee_voucher);
+        feevoucherButton.setOnClickListener(v -> {
+            goToStudentActionActivity("FeeVoucher");
         });
     }
 

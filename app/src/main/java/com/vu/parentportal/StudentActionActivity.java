@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,8 +29,9 @@ public class StudentActionActivity extends AppCompatActivity {
     private String selectedAction;
     private Student student;
     private String imageFileName;
-    private TextView selectedImageTextView;
     private ImageView imagePreviewImageView;
+    Button selectImageButton;
+    Button uploadImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +41,15 @@ public class StudentActionActivity extends AppCompatActivity {
         selectedAction = getIntent().getStringExtra("selectedAction");
         setTitle("Student " + selectedAction);
         imageFileName = student.getStudentId() + "_" + selectedAction + ".jpg";
-        selectedImageTextView = findViewById(R.id.tv_selected_image);
         imagePreviewImageView = findViewById(R.id.iv_image_preview);
-        Button selectImageButton = findViewById(R.id.btn_select_image);
-        Button uploadImageButton = findViewById(R.id.btn_upload_image);
+        selectImageButton = findViewById(R.id.btn_select_image);
+        uploadImageButton = findViewById(R.id.btn_upload_image);
 
         populateUI();
 
         // Check if the image exists
         File imgeFile = new File(getFilesDir(), imageFileName);
         if (imgeFile.exists()) {
-            selectedImageTextView.setText("File: " + imgeFile.getName());
             imagePreviewImageView.setImageURI(Uri.fromFile(imgeFile));
         }
 
@@ -108,7 +108,7 @@ public class StudentActionActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             selectedImageUri = data.getData();
             selectedImageName = getFileName(selectedImageUri);
-            selectedImageTextView.setText("Selected File: " + selectedImageName);
+//            selectedImageTextView.setText("Selected File: " + selectedImageName);
             imagePreviewImageView.setImageURI(selectedImageUri);
         }
     }
@@ -142,7 +142,6 @@ public class StudentActionActivity extends AppCompatActivity {
             }
             outputStream.close();
             inputStream.close();
-            selectedImageTextView.setText("File: " + file.getName());
             return file;
         } catch (Exception e) {
             Toast.makeText(this, "Error saving image: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -164,9 +163,17 @@ public class StudentActionActivity extends AppCompatActivity {
 
         File imageFile = new File(getFilesDir(), imageFileName);
         if (imageFile.exists()) {
-            selectedImageTextView.setText("File: " + imageFile.getName());
             imagePreviewImageView.setImageURI(Uri.fromFile(imageFile));
             selectedImageUri = Uri.fromFile(imageFile);
         }
+
+        if(((ParentPortalApp) getApplication()).getUserType().equalsIgnoreCase("Teacher")) {
+            selectImageButton.setVisibility(View.VISIBLE);
+            uploadImageButton.setVisibility(View.VISIBLE);
+        } else {
+            selectImageButton.setVisibility(View.GONE);
+            uploadImageButton.setVisibility(View.GONE);
+        }
+
     }
 }
