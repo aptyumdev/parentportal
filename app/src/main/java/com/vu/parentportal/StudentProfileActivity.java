@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import com.vu.parentportal.database.AppDatabase;
 import com.vu.parentportal.database.DatabaseHelper;
 import com.vu.parentportal.models.Student;
@@ -26,21 +23,12 @@ public class StudentProfileActivity extends AppCompatActivity {
         studentClassEditText = findViewById(R.id.et_student_class);
         studentAgeEditText = findViewById(R.id.et_student_age);
         Button saveButton = findViewById(R.id.btn_save_student_button);
-
-        // Get the studentId from the intent
         String studentId = getIntent().getStringExtra("studentId");
-
-        // Initialize the database
-//        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, AppDatabase.DATABASE_NAME)
-//                .allowMainThreadQueries()
-//                .build();
         AppDatabase db = DatabaseHelper.getDatabase(this);
-
         // Query the student details using the studentId
         Student student = db.studentDao().getStudentByStudentId(studentId);
 
         if (student != null) {
-            // Populate the text fields with the student details
             studentIdEditText.setText(student.getStudentId());
             studentPasswordEditText.setText(student.getStudentPassword());
             studentFullNameEditText.setText(student.getStudentFullName());

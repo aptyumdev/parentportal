@@ -21,11 +21,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-public class StudentTimetableAddActivity extends AppCompatActivity {
+public class StudentActionActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri selectedImageUri;
     private String selectedImageName;
-    private String studentId;
+    private String selectedAction;
+    private Student student;
     private String imageFileName;
     private TextView selectedImageTextView;
     private ImageView imagePreviewImageView;
@@ -33,10 +34,11 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_timetable_add);
-
-        studentId = getIntent().getStringExtra("studentId");
-        imageFileName = studentId + "_timetable.jpg";
+        setContentView(R.layout.activity_student_action);
+        student = ((ParentPortalApp) getApplication()).getSelectedStudent();
+        selectedAction = getIntent().getStringExtra("selectedAction");
+        setTitle("Student " + selectedAction);
+        imageFileName = student.getStudentId() + "_" + selectedAction + ".jpg";
         selectedImageTextView = findViewById(R.id.tv_selected_image);
         imagePreviewImageView = findViewById(R.id.iv_image_preview);
         Button selectImageButton = findViewById(R.id.btn_select_image);
@@ -91,7 +93,7 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
         });
         imagePreviewImageView.setOnClickListener(v -> {
             if (selectedImageUri != null) {
-                Intent intent = new Intent(StudentTimetableAddActivity.this, FullScreenImageActivity.class);
+                Intent intent = new Intent(StudentActionActivity.this, FullScreenImageActivity.class);
                 intent.putExtra("imageUri", selectedImageUri);
                 startActivity(intent);
             } else {
@@ -110,6 +112,7 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
             imagePreviewImageView.setImageURI(selectedImageUri);
         }
     }
+
     @SuppressLint("Range")
     private String getFileName(Uri uri) {
         String fileName = "unknown";
@@ -146,9 +149,10 @@ public class StudentTimetableAddActivity extends AppCompatActivity {
             return null;
         }
     }
+
     void populateUI() {
         AppDatabase db = DatabaseHelper.getDatabase(this);
-        Student updatedStudent = db.studentDao().getStudentByStudentId(studentId);
+        Student updatedStudent = db.studentDao().getStudentByStudentId(student.getStudentId());
         if (updatedStudent != null) {
             TextView studentNameTextView = findViewById(R.id.tv_student_name);
             TextView studentIdTextView = findViewById(R.id.tv_student_id);

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
+        android:name=".ParentPortalApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_vu_logo"
         android:label="@string/app_name"
@@ -16,41 +17,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TeacherActivity"
+            android:name=".LoginActivity"
             android:exported="false"
-            android:label="@string/teacher_activity_title" />
-        <activity
-            android:name=".ParentActivity"
-            android:exported="false"
-            android:label="@string/parent_activity_title" />
+            android:label="@string/login_activity_title" />
+<!--        <activity-->
+<!--            android:name=".ParentActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/parent_activity_title" />-->
         <activity
             android:name=".StudentListActivity"
             android:exported="false"
             android:label="@string/student_list_title" />
 
         <activity
-            android:name=".StudentAddActivity"
+            android:name=".StudentEditActivity"
             android:exported="false"
-            android:label="@string/student_add_title" />
+            android:label="@string/student_edit_title" />
 
         <activity
             android:name=".StudentDetailActivity"
             android:exported="false"
             android:label="@string/student_detail_title" />
 
-        <activity
-            android:name=".StudentProfileActivity"
-            android:exported="false"
-            android:label="@string/student_profile_title" />
+<!--        <activity-->
+<!--            android:name=".StudentProfileActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/student_profile_title" />-->
 
         <activity
-            android:name=".StudentTimetableAddActivity"
+            android:name=".StudentActionActivity"
             android:exported="false"
-            android:label="@string/student_timetable_title" />
-        <activity
-            android:name=".StudentSyllabusAddActivity"
-            android:exported="false"
-            android:label="@string/student_syllabus_title" />
+            android:label="@string/student_action_title" />
+
 
         <activity
             android:name=".FullScreenImageActivity"

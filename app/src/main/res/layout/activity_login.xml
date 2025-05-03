@@ -7,16 +7,16 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/teacherid"
+        android:id="@+id/user_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone|flagNoExtractUi"
         android:text="teacher"
-        android:hint="Teacher ID"
+        android:hint="User ID"
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/teacherpassword"
+        android:id="@+id/user_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone|flagNoExtractUi"

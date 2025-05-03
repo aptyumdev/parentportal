@@ -10,32 +10,34 @@ import com.vu.parentportal.database.DatabaseHelper;
 import com.vu.parentportal.models.Student;
 
 public class StudentDetailActivity extends AppCompatActivity {
-    String studentId = "";
+    Student student;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_detail);
-        studentId = getIntent().getStringExtra("studentId");
+        student = ((ParentPortalApp) getApplication()).getSelectedStudent();
         populateUI();
         Button profileEditButton = findViewById(R.id.btn_student_profile);
         profileEditButton.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentDetailActivity.this, StudentProfileActivity.class);
-            intent.putExtra("studentId", studentId);
+            Intent intent = new Intent(StudentDetailActivity.this, StudentEditActivity.class);
+            intent.putExtra("selectedAction", "Profile");
             startActivity(intent);
         });
 
         Button timetableButton = findViewById(R.id.btn_student_timetable);
         timetableButton.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentDetailActivity.this, StudentTimetableAddActivity.class);
-            intent.putExtra("studentId", studentId);
-            startActivity(intent);
+            goToStudentActionActivity("Timetable");
         });
         Button syllabusButton = findViewById(R.id.btn_student_syllabus);
         syllabusButton.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentDetailActivity.this, StudentSyllabusAddActivity.class);
-            intent.putExtra("studentId", studentId);
-            startActivity(intent);
+            goToStudentActionActivity("Syllabus");
         });
+    }
+
+    private void goToStudentActionActivity(String action) {
+        Intent intent = new Intent(StudentDetailActivity.this, StudentActionActivity.class);
+        intent.putExtra("selectedAction", action);
+        startActivity(intent);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class StudentDetailActivity extends AppCompatActivity {
 
     void populateUI() {
         AppDatabase db = DatabaseHelper.getDatabase(this);
-        Student updatedStudent = db.studentDao().getStudentByStudentId(studentId);
+        Student updatedStudent = db.studentDao().getStudentByStudentId(student.getStudentId());
         if (updatedStudent != null) {
             TextView studentNameTextView = findViewById(R.id.tv_student_name);
             TextView studentIdTextView = findViewById(R.id.tv_student_id);

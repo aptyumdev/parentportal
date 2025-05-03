@@ -5,15 +5,10 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import com.vu.parentportal.database.AppDatabase;
 import com.vu.parentportal.database.DatabaseHelper;
 import com.vu.parentportal.models.Student;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,16 +28,14 @@ public class StudentListActivity extends AppCompatActivity {
         db = DatabaseHelper.getDatabase(this);
         loadStudentList();
         addStudentButton.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentListActivity.this, StudentAddActivity.class);
+            Intent intent = new Intent(StudentListActivity.this, StudentEditActivity.class);
+            intent.putExtra("selectedAction", "Add");
             startActivityForResult(intent, ADD_STUDENT_REQUEST);
         });
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Student selectedStudent = db.studentDao().getAllStudents().get(position);
+            ((ParentPortalApp) getApplication()).setSelectedStudent(selectedStudent);
             Intent intent = new Intent(StudentListActivity.this, StudentDetailActivity.class);
-            intent.putExtra("studentName", selectedStudent.getStudentFullName());
-            intent.putExtra("studentId", selectedStudent.getStudentId());
-            intent.putExtra("pkid", selectedStudent.getId());
-            intent.putExtra("studentClass", selectedStudent.getStudentClass());
             startActivity(intent);
         });
     }
