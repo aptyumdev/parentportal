@@ -14,4 +14,5 @@
     <string name="button_save_student">Save</string>
     <string name="button_add_new_student">Add New Student</string>
     <string name="fullscreen_image_title">Full Screen</string>
+    <string name="content_list_title">Parent Portal</string>
 </resources>

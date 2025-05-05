@@ -39,11 +39,6 @@
             android:exported="false"
             android:label="@string/student_detail_title" />
 
-<!--        <activity-->
-<!--            android:name=".StudentProfileActivity"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/student_profile_title" />-->
-
         <activity
             android:name=".StudentActionActivity"
             android:exported="false"
@@ -55,6 +50,17 @@
             android:exported="false"
             android:theme="@style/Theme.ParentPortal.FullScreen"
             android:label="@string/fullscreen_image_title" />
+
+        <activity
+            android:name=".ContentListActivity"
+            android:exported="false"
+            android:label="@string/content_list_title" />
+
+        <activity
+            android:name=".ContentEditActivity"
+            android:exported="false"
+            android:label="@string/content_list_title" />
+
     </application>
 
 </manifest>

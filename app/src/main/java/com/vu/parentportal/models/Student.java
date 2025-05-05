@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-//@Entity
 @Entity(tableName = "Student", indices = {@Index(value = "studentId", unique = true)})
 public class Student {
     @PrimaryKey(autoGenerate = true)

@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.vu.parentportal.database.AppDatabase;
 import com.vu.parentportal.database.DatabaseHelper;
 import com.vu.parentportal.models.Student;
 
 public class StudentDetailActivity extends AppCompatActivity {
     Student student;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,44 @@ public class StudentDetailActivity extends AppCompatActivity {
         Button feevoucherButton = findViewById(R.id.btn_student_fee_voucher);
         feevoucherButton.setOnClickListener(v -> {
             goToStudentActionActivity("FeeVoucher");
+        });
+        Button transportButton = findViewById(R.id.btn_student_transport);
+        transportButton.setOnClickListener(v -> {
+            goToStudentActionActivity("Transport");
+        });
+        Button assignmentButton = findViewById(R.id.btn_student_assignments);
+        assignmentButton.setOnClickListener(v -> {
+            goToStudentActionActivity("Assignment");
+        });
+        Button attendanceButton = findViewById(R.id.btn_student_attendance);
+        attendanceButton.setOnClickListener(v -> {
+            goToStudentActionActivity("Attendance");
+        });
+        Button feedbackButton = findViewById(R.id.btn_student_feedback);
+        feedbackButton.setOnClickListener(v -> {
+            String userType = ((ParentPortalApp) getApplication()).getUserType();
+            if (userType.equalsIgnoreCase("Teacher")) {
+                Intent intent = new Intent(StudentDetailActivity.this, ContentListActivity.class);
+                intent.putExtra("selectedAction", "Feedback");
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(StudentDetailActivity.this, ContentEditActivity.class);
+                intent.putExtra("selectedAction", "Feedback");
+                startActivity(intent);
+            }
+        });
+        Button announcementButton = findViewById(R.id.btn_student_announcements);
+        announcementButton.setOnClickListener(v -> {
+            String userType = ((ParentPortalApp) getApplication()).getUserType();
+            if (userType.equalsIgnoreCase("Parent")) {
+                Intent intent = new Intent(StudentDetailActivity.this, ContentListActivity.class);
+                intent.putExtra("selectedAction", "Announcement");
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(StudentDetailActivity.this, ContentEditActivity.class);
+                intent.putExtra("selectedAction", "Announcement");
+                startActivity(intent);
+            }
         });
     }
 

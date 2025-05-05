@@ -4,47 +4,10 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:padding="16dp">
-
-    <!-- Hidden field to store student ID -->
-<!--    <EditText-->
-<!--        android:id="@+id/hidden_student_id"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:visibility="gone" />-->
-
-    <LinearLayout
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="4dp"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/tv_student_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Student Name: [Name]"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_student_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="ID: [ID]"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_student_class"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Class: [Class]"
-            android:textSize="16sp" />
-    </LinearLayout>
-
+        layout="@layout/student_info_layout" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,14 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select File" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_selected_image"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="No file selected"-->
-<!--            android:textSize="16sp" />-->
 
         <ImageView
             android:id="@+id/iv_image_preview"
